@@ -19,7 +19,6 @@ struct BentoCollectionView: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: BentoCollectionViewController, context: Context) {
-//        print("Updating... current list is \(elements.wrappedValue)")
         uiViewController.updateItems(diffingWith: elements.wrappedValue)
     }
 
@@ -27,6 +26,11 @@ struct BentoCollectionView: UIViewControllerRepresentable {
         Coordinator(parent: self)
     }
 
+    // Coordinator is probably not required right now but it is
+    // a good starting point for making something larger
+    // The gist here is to use it as a delegate or handler
+    // but sometimes you need access to the SwiftUI View
+    // so here is a template for it
     final class Coordinator: BentoCollectionViewDelegate {
         var parent: BentoCollectionView
 
